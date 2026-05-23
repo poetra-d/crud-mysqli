@@ -1,0 +1,108 @@
+body{
+    font-family: Arial, sans-serif;
+    background: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+}
+
+.container{
+    width: 900px;
+    margin: auto;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+h2{
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+table{
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table,
+th,
+td{
+    border: 1px solid #ddd;
+}
+
+th{
+    background: #f0f0f0;
+}
+
+th,
+td{
+    padding: 12px;
+    text-align: center;
+}
+
+tr:nth-child(even){
+    background: #fafafa;
+}
+
+tr:hover{
+    background: #f1f1f1;
+}
+
+input{
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button{
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background: #007bff;
+    color: white;
+}
+
+.btn{
+    text-decoration: none;
+    padding: 8px 14px;
+    border-radius: 5px;
+    color: white;
+    display: inline-block;
+}
+
+.tambah{
+    background: green;
+}
+
+.edit{
+    background: orange;
+}
+
+.hapus{
+    background: red;
+}
+
+.kembali{
+    background: gray;
+}
+
+.error{
+    background: #ffd4d4;
+    color: red;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.success{
+    background: #d4ffd4;
+    color: green;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}

@@ -1,0 +1,10 @@
+CREATE DATABASE db_kampus;
+
+USE db_kampus;
+
+CREATE TABLE mahasiswa (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nama VARCHAR(100) NOT NULL,
+    nim VARCHAR(20) NOT NULL UNIQUE,
+    jurusan VARCHAR(100) NOT NULL
+);
