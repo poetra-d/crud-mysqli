@@ -1,14 +1,14 @@
 <?php
-    include 'koneksi.php';
+include 'koneksi.php';
 
-    $error   = "";
-    $success = "";
+$error   = "";
+$success = "";
 
-    $nama    = "";
-    $nim     = "";
-    $jurusan = "";
+$nama    = "";
+$nim     = "";
+$jurusan = "";
 
-    if (isset($_POST['submit'])) {
+if (isset($_POST['submit'])) {
 
     $nama    = trim($_POST['nama']);
     $nim     = trim($_POST['nim']);
@@ -21,23 +21,18 @@
     if (empty($nama) || empty($nim) || empty($jurusan)) {
 
         $error = "Semua field wajib diisi!";
-
     } elseif (strlen($nama) < 3) {
 
         $error = "Nama minimal 3 karakter!";
-
     } elseif (! is_numeric($nim)) {
 
         $error = "NIM harus berupa angka!";
-
     } elseif (strlen($nim) < 5) {
 
         $error = "NIM minimal 5 digit!";
-
     } elseif (strlen($jurusan) < 3) {
 
         $error = "Jurusan minimal 3 karakter!";
-
     } else {
 
         $cek = $conn->prepare(
@@ -57,7 +52,6 @@
         if ($result->num_rows > 0) {
 
             $error = "NIM sudah terdaftar!";
-
         } else {
 
             $stmt = $conn->prepare(
@@ -83,18 +77,18 @@
                 $nama    = "";
                 $nim     = "";
                 $jurusan = "";
-
             } else {
 
                 $error = "Gagal tambah data!";
             }
         }
     }
-    }
+}
 ?>
 
 <!DOCTYPE html>
 <html>
+
 <head>
 
     <title>Tambah Data</title>
@@ -102,58 +96,75 @@
     <link rel="stylesheet" href="style.css">
 
 </head>
+
 <body>
 
-<div class="container">
+    <div class="container">
 
-    <h2>Tambah Data Mahasiswa</h2>
+        <h2 class="form-title">Tambah Data Mahasiswa</h2>
 
-    <?php if ($error != "") {?>
-        <div class="error">
-            <?php echo $error; ?>
-        </div>
-    <?php }?>
+        <?php if ($error != "") { ?>
+            <div class="error">
+                <?php echo $error; ?>
+            </div>
+        <?php } ?>
 
-    <?php if ($success != "") {?>
-        <div class="success">
-            <?php echo $success; ?>
-        </div>
-    <?php }?>
+        <?php if ($success != "") { ?>
+            <div class="success">
+                <?php echo $success; ?>
+            </div>
+        <?php } ?>
 
-    <form method="POST">
+        <form method="POST">
 
-        <input
-            type="text"
-            name="nama"
-            placeholder="Masukkan Nama"
-            value="<?php echo $nama; ?>"
-        >
+            <input
+                type="text"
+                name="nama"
+                placeholder="Masukkan Nama"
+                value="<?php echo $nama; ?>">
 
-        <input
-            type="text"
-            name="nim"
-            placeholder="Masukkan NIM"
-            value="<?php echo $nim; ?>"
-        >
+            <input
+                type="text"
+                name="nim"
+                placeholder="Masukkan NIM"
+                value="<?php echo $nim; ?>">
 
-        <input
-            type="text"
-            name="jurusan"
-            placeholder="Masukkan Jurusan"
-            value="<?php echo $jurusan; ?>"
-        >
+            <select name="jurusan">
 
-        <button type="submit" name="submit">
-            Simpan
-        </button>
+                <option value="">
+                    -- Pilih Jurusan --
+                </option>
 
-        <a href="index.php" class="btn kembali">
-            Kembali
-        </a>
+                <option value="Teknik Informatika" <?= $jurusan == 'Teknik Informatika' ? 'selected' : ''; ?>>
+                    Teknik Informatika
+                </option>
 
-    </form>
+                <option value="Sistem Informasi" <?= $jurusan == 'Sistem Informasi' ? 'selected' : ''; ?>>
+                    Sistem Informasi
+                </option>
 
-</div>
+                <option value="Manajemen Informatika" <?= $jurusan == 'Manajemen Informatika' ? 'selected' : ''; ?>>
+                    Manajemen Informatika
+                </option>
+
+                <option value="Teknik Komputer" <?= $jurusan == 'Teknik Komputer' ? 'selected' : ''; ?>>
+                    Teknik Komputer
+                </option>
+
+            </select>
+
+            <button type="submit" name="submit">
+                Simpan
+            </button>
+
+            <a href="index.php" class="btn kembali">
+                Kembali
+            </a>
+
+        </form>
+
+    </div>
 
 </body>
+
 </html>

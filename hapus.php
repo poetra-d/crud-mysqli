@@ -21,7 +21,6 @@ if ($stmt->execute()) {
 
     header("Location: index.php");
     exit;
-
 } else {
 
     echo "Gagal hapus data!";
